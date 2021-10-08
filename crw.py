@@ -28,6 +28,12 @@ headers = {"user-agent": "Mozilla/5.0"}
 res = requests.get(url, headers=headers)
 soup = BeautifulSoup(res.text, 'html.parser')
 
+insta = soup.select('.v1Nh3.kIKUG._bz0w')
+
+img_list = []
+for i in insta:
+    img_url = i.select_one('.KL4Bh').img['src']
+    img_list.append(img_url)
 
 # 이미지 다운로드
 resp = requests.get(image_url, stream=True)
